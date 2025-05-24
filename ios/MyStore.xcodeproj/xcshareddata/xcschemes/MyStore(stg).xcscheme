@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1210"
+   LastUpgradeVersion = "1600"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -10,7 +10,7 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Run Script"
-               scriptText = "# Useful for debug&#10;set +x&#10;&#10;# This loads nvm&#10;export NVM_DIR=&quot;$HOME/.nvm&quot;&#10;  [ -s &quot;/opt/homebrew/opt/nvm/nvm.sh&quot; ] &amp;&amp; source &quot;/opt/homebrew/opt/nvm/nvm.sh&quot;&#10;&#10;# Verify NDOE_BINARY&#10;/bin/sh -c &quot;chmod +x ${SRCROOT}/../node_modules/react-native/scripts/node-binary.sh&quot;&#10;/bin/sh &quot;${SRCROOT}/../node_modules/react-native/scripts/node-binary.sh&quot;&#10;&#10;# react-native-config&#10;cp &quot;${PROJECT_DIR}/../.env.production&quot; &quot;${PROJECT_DIR}/../.env&quot;&#10;&quot;${SRCROOT}/../node_modules/react-native-config/ios/ReactNativeConfig/BuildXCConfig.rb&quot; &quot;${SRCROOT}/..&quot; &quot;${SRCROOT}/tmp.xcconfig&quot;&#10;">
+               scriptText = "# Useful for debug&#10;set +x&#10;&#10;# This loads nvm&#10;export NVM_DIR=&quot;$HOME/.nvm&quot;&#10;  [ -s &quot;/opt/homebrew/opt/nvm/nvm.sh&quot; ] &amp;&amp; source &quot;/opt/homebrew/opt/nvm/nvm.sh&quot;&#10;&#10;# Verify NDOE_BINARY&#10;/bin/sh -c &quot;chmod +x ${SRCROOT}/../node_modules/react-native/scripts/node-binary.sh&quot;&#10;/bin/sh &quot;${SRCROOT}/../node_modules/react-native/scripts/node-binary.sh&quot;&#10;&#10;# react-native-config&#10;cp &quot;${PROJECT_DIR}/../.env.staging&quot; &quot;${PROJECT_DIR}/../.env&quot;&#10;&quot;${SRCROOT}/../node_modules/react-native-config/ios/ReactNativeConfig/BuildXCConfig.rb&quot; &quot;${SRCROOT}/..&quot; &quot;${SRCROOT}/tmp.xcconfig&quot;&#10;">
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"
@@ -44,22 +44,11 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
-      <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "MyStoreTests.xctest"
-               BlueprintName = "MyStoreTests"
-               ReferencedContainer = "container:MyStore.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-      </Testables>
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      shouldAutocreateTestPlan = "YES">
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Staging"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
