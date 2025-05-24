@@ -1,3 +1,10 @@
+If can't run start the Metro, use this command to request permission.
+
+```sh
+# Request permission access file.
+chmod +x ./envscript.sh
+```
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started

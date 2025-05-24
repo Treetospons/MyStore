@@ -15,6 +15,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import Config from 'react-native-config';
 
 import {
   Colors,
@@ -72,17 +73,20 @@ function App(): React.JSX.Element {
    */
   const safePadding = '5%';
 
+  const BASE_API = Config.BASE_API ?? '';
+  const APP_NAME = Config.APP_NAME ?? '';
   return (
     <View style={backgroundStyle}>
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <ScrollView
-        style={backgroundStyle}>
+      <ScrollView style={backgroundStyle}>
         <View style={{paddingRight: safePadding}}>
-          <Header/>
+          <Header />
         </View>
+        <Text>BASE_API: {BASE_API}</Text>
+        <Text>APP_NAME: {APP_NAME}</Text>
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
