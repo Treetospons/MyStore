@@ -84,7 +84,14 @@ const ProductListView = () => {
         </Typography>
       </Box>
     );
-  }, [isLoading, productList, itemHeight, error, onRefresh, renderItem]);
+  }, [
+    isLoading,
+    productList,
+    itemHeight,
+    error,
+    onRefresh,
+    renderItem,
+  ]);
 
   return render;
 };
