@@ -10,7 +10,7 @@ import {TProductShema} from '~/services/rest-api/types/productType';
 
 function* fetchProductList() {
   try {
-    const {data, status}: AxiosResponse<TProductShema> = yield call(
+    const {data, status}: AxiosResponse<TProductShema[]> = yield call(
       fetchProductAll,
     );
 

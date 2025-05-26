@@ -1,12 +1,11 @@
-import {createSlice} from '@reduxjs/toolkit';
-import { TProductShema } from '~/services/rest-api/types/productType';
-
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {TProductShema} from '~/services/rest-api/types/productType';
 
 export type TProductList = {
-  isLoading: boolean,
-  productList: TProductShema[],
-  error: any,
-}
+  isLoading?: boolean;
+  productList?: TProductShema[];
+  error?: any;
+};
 
 const initialState: TProductList = {
   isLoading: false,
@@ -22,13 +21,13 @@ const listSlice = createSlice({
       state.isLoading = true;
       state.error = null;
     },
-    fetchProductListSuccess: (state, action) => {
+    fetchProductListSuccess: (state, action: PayloadAction<TProductList>) => {
       state.isLoading = false;
-      state.productList = action.payload?.productList;
+      state.productList = action.payload.productList;
     },
-    fetchProductListFailure: (state, action) => {
+    fetchProductListFailure: (state, action: PayloadAction<{error: any}>) => {
       state.isLoading = false;
-      state.error = action.payload?.error;
+      state.error = action.payload.error;
     },
   },
 });

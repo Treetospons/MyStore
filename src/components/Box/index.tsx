@@ -1,5 +1,6 @@
 import React, {ReactNode} from 'react';
 import {FlexAlignType, View, ViewProps, ViewStyle} from 'react-native';
+import useTheme from '~/hooks/useTheme';
 import {colors, spacing} from '~/themes';
 
 type TPadding = Record<'p' | 'pv' | 'ph' | 'pt' | 'pb' | 'pl' | 'pr', string>;
@@ -22,7 +23,7 @@ export type TBox = {
     | 'space-around'
     | 'space-evenly';
   rounded?: keyof typeof spacing.Spacing;
-  backgroundColor?: keyof typeof colors.Light | 'transparent';
+  backgroundColor?: keyof typeof colors.Light & keyof typeof colors.Dark;
   style?: ViewStyle;
   children?: ReactNode;
 } & ViewProps;
@@ -52,6 +53,8 @@ const Box = ({
   children,
   ...props
 }: TBox) => {
+  const {appTheme} = useTheme();
+
   const getMargin = () => {
     const obj: ViewStyle = {};
 
@@ -129,7 +132,7 @@ const Box = ({
       alignItems,
       flexDirection,
       borderRadius: rounded ? spacing.Spacing[rounded] : 0,
-      backgroundColor: colors.Light[backgroundColor ?? 'transparent'],
+      backgroundColor: colors[appTheme][backgroundColor ?? 'transparent'],
     },
     getMargin(),
     getPadding(),

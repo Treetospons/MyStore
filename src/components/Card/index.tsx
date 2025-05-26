@@ -6,6 +6,7 @@ import {
   ViewProps,
   ViewStyle,
 } from 'react-native';
+import useTheme from '~/hooks/useTheme';
 import {colors, spacing} from '~/themes';
 
 export type TCard = {
@@ -20,8 +21,8 @@ export type TCard = {
     | 'space-around'
     | 'space-evenly';
   rounded?: keyof typeof spacing.Spacing;
-  borderColor?: keyof typeof colors.Light;
-  backgroundColor?: keyof typeof colors.Light;
+  borderColor?: keyof typeof colors.Light & keyof typeof colors.Dark;
+  backgroundColor?: keyof typeof colors.Light & keyof typeof colors.Dark;
   style?: TextStyle;
   children?: ReactNode;
 } & ViewProps;
@@ -38,6 +39,8 @@ const Card = ({
   children,
   ...props
 }: TCard) => {
+  const {appTheme} = useTheme();
+
   const CardStyles: ViewStyle[] = [
     {
       width: width,
@@ -47,8 +50,8 @@ const Card = ({
       padding: spacing.Spacing.md,
       borderRadius: rounded ? spacing.Spacing[rounded] : 0,
       borderWidth: 1,
-      borderColor: colors.Light[borderColor ?? 'white'],
-      backgroundColor: colors.Light[backgroundColor ?? 'white'],
+      borderColor: colors[appTheme][borderColor ?? 'white'],
+      backgroundColor: colors[appTheme][backgroundColor ?? 'white'],
       overflow: 'hidden',
     },
     style ?? {},

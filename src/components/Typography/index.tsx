@@ -1,5 +1,6 @@
 import React, {ReactNode} from 'react';
 import {Text, TextStyle, TextProps, ViewStyle} from 'react-native';
+import useTheme from '~/hooks/useTheme';
 import {colors, fonts, spacing} from '~/themes';
 
 type TMargin = Record<'m' | 'mv' | 'mh' | 'mt' | 'mb' | 'ml' | 'mr', string>;
@@ -8,7 +9,7 @@ type TTypography = {
   [K in keyof TMargin]?: keyof typeof spacing.Spacing;
 } & {
   size?: keyof typeof fonts.FontSize;
-  color?: keyof typeof colors.Light;
+  color?: keyof typeof colors.Light & keyof typeof colors.Dark;
   textAlign?: 'center' | 'auto' | 'left' | 'right' | 'justify';
   variant?: keyof typeof fonts.FontFamily;
   style?: TextStyle;
@@ -31,6 +32,8 @@ const Typography = ({
   children,
   ...props
 }: TTypography) => {
+  const {appTheme} = useTheme();
+
   const getMargin = () => {
     const obj: ViewStyle = {};
 
@@ -68,7 +71,7 @@ const Typography = ({
 
   const TextStyles: TextStyle[] = [
     {
-      color: colors.Light[color ?? 'primary100'],
+      color: colors[appTheme][color ?? 'primary100'],
       textAlign,
       fontSize: fonts.FontSize[size ?? 'md'],
       fontFamily: fonts.FontFamily[variant ?? 'regular'],

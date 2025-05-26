@@ -8,6 +8,7 @@ import {
 import Box from '~/components/Box';
 import Image from '~/components/Image';
 import Typography from '~/components/Typography';
+import useTheme from '~/hooks/useTheme';
 import {colors} from '~/themes';
 import {moderateScale} from '~/utils/scale';
 import useProductItemViewmodel from '~/viewmodels/product/useProductItemViewmodel';
@@ -17,13 +18,18 @@ export type TProductItemView = {
 };
 
 const ProductItemView = () => {
+  const {appTheme} = useTheme();
+
   const {isLoading, productItem, error, onRefresh} = useProductItemViewmodel();
 
   const render = useMemo(() => {
     if (isLoading) {
       return (
         <Box flex={1} alignItems="center" justifyContent="center">
-          <ActivityIndicator size={'large'} color={colors.Light.primary100} />
+          <ActivityIndicator
+            size={'large'}
+            color={colors[appTheme].primary100}
+          />
         </Box>
       );
     }
@@ -96,9 +102,9 @@ const ProductItemView = () => {
     <ScrollView
       refreshControl={
         <RefreshControl
-          refreshing={isLoading}
+          refreshing={isLoading ?? false}
           onRefresh={onRefresh}
-          tintColor={colors.Light.primary100}
+          tintColor={colors[appTheme].primary100}
         />
       }
       style={styles.container}>

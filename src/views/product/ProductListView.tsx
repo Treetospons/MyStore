@@ -4,6 +4,7 @@ import Box from '~/components/Box';
 import Gap from '~/components/Gap';
 import CardProduct from '~/components/modules/product/CardProduct';
 import Typography from '~/components/Typography';
+import useTheme from '~/hooks/useTheme';
 import {TProductShema} from '~/services/rest-api/types/productType';
 import {colors} from '~/themes';
 import useProductListViewmodel from '~/viewmodels/product/useProductListViewmodel';
@@ -18,6 +19,7 @@ const ProductListView = () => {
     onGotoProductItem,
     onHandelItemHeight,
   } = useProductListViewmodel();
+  const {appTheme} = useTheme();
 
   const renderItem = useCallback(
     ({item}: {item: TProductShema}) => {
@@ -37,7 +39,10 @@ const ProductListView = () => {
     if (isLoading) {
       return (
         <Box flex={1} alignItems="center" justifyContent="center">
-          <ActivityIndicator size={'large'} color={colors.Light.primary100} />
+          <ActivityIndicator
+            size={'large'}
+            color={colors[appTheme].primary100}
+          />
         </Box>
       );
     }
@@ -84,14 +89,7 @@ const ProductListView = () => {
         </Typography>
       </Box>
     );
-  }, [
-    isLoading,
-    productList,
-    itemHeight,
-    error,
-    onRefresh,
-    renderItem,
-  ]);
+  }, [isLoading, productList, itemHeight, error, onRefresh, renderItem, appTheme]);
 
   return render;
 };
