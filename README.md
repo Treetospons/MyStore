@@ -34,11 +34,11 @@ yarn clean-ios
 
 ```sh
 # Environment dev
-yarn android
+yarn ios
 # Environment stg
-yarn android:stg
+yarn ios:stg
 # Environment prd
-yarn android:prd
+yarn ios:prd
 ```
 
 ## Modify your app
