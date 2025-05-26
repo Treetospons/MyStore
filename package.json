@@ -17,7 +17,7 @@
     "lint": "eslint .",
     "start": "react-native start --reset-cache",
     "clean-android": "cd android && rm -rf app/.cxx && ./gradlew clean && ./gradlew --stop && cd ..",
-    "clean-ios": "cd ios && rm -rf Pods && rm -rf Podfile.lock && pod install && cd ..",
+    "clean-ios": "cd ios && rm -rf Pods && rm -rf Podfile.lock && RCT_NEW_ARCH_ENABLED=1 bundle exec pod install && cd ..",
     "clean": "rm -rf node_modules && rm -rf yarn.lock && yarn install && yarn clean-android && yarn clean-ios",
     "test": "jest"
   },
