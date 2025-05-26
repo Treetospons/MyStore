@@ -1,6 +1,5 @@
 declare module 'react-native-config' {
   export interface NativeConfig {
-    APP_NAME?: string;
     BASE_API?: string;
   }
 
