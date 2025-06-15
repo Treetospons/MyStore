@@ -2,7 +2,16 @@ import {configureStore} from '@reduxjs/toolkit';
 import rootReducer from './reducers';
 import rootSaga from './sagas';
 import {storage} from '~/utils/storage';
-import {persistReducer, persistStore} from 'redux-persist';
+import {
+  persistReducer,
+  persistStore,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
 
 const createSagaMiddleware = require('redux-saga').default;
 
@@ -20,7 +29,9 @@ export const store = configureStore({
   reducer: persistedReducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
-      serializableCheck: false,
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
     }).concat(sagaMiddleware),
 });
 
